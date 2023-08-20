@@ -104,10 +104,10 @@ class CompanyController{
         company.name = req.body.name
         company.slug = req.body.slug
         company.employeesCount = req.body.employeesCount
-        if(req.file.filename && company.image){
+        if(req.file?.filename && company.image){
             fs.unlinkSync('public/uploads/'+company.image)
         }
-        if(req.file.filename){
+        if(req.file?.filename){
             company.image = req.file.filename
         }
         
