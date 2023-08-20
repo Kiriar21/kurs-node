@@ -1,0 +1,71 @@
+<h1>Lista Firm</h1>    
+    
+    <% if (user) { %>
+
+        <a href="/admin/firmy/dodaj" class="btn btn-success">Dodaj nowa firme</a>
+
+    <% } %>
+
+    <a href="/csv">Pobierz plik csv</a>
+
+    <form>
+        <%- include('partials/search') %>
+        
+
+
+        <div class="row">
+
+            <div class="col-3">
+
+                <%- include('partials/sort') %>
+                <%- include('partials/filter') %>
+                    
+
+            </div>
+            
+            <div class="col-9">
+
+                <% companies.forEach( company => { %>
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                           
+                            <div class="row">
+
+                                <div class="col-3">
+
+                                    <img src="/uploads/<%= company.image %>" alt="" class="img-fluid">
+
+                                </div>
+
+                                <div class="col-9">
+                                    <p class="h3 mb-4"><%= company.name %> </p>
+                                    <p class="h3 mb-4">Pracowników: <%= company.employeesCount %> </p>
+                                    <p class="h3 mb-4">Kontakt: <%= company.user?.email %></p>
+                                    <p class="h3 mb-4">CEO: <%= company.user?.fullName %> </p>
+                                    <a href="/firmy/<%= company.slug %>" class="btn btn-primary">Zobacz</a>
+                                    
+        
+                                    <!-- Sprawdzenie czy firma ma wlasciciela oraz sprawdzenie czy uzytkownik jest wlascicielem tego obiektu -->
+                                    <% if ( typeof(company.user?._id.toString()) !== 'undefined' &&  (user?._id) === company.user?._id.toString() ) { %>
+                                        <a href="/admin/firmy/<%= company.slug %>/edytuj" class="btn btn-warning">Edytuj</a>
+                                        <a href="/admin/firmy/<%= company.slug %>/usun" 
+                                            onclick="return confirm('Czy jesteś pewny, że chcesz usunąć tę firme?')" 
+                                            class="btn btn-danger">Usuń</a>
+                                        
+                                    <% } %>                            
+        
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                <% }) %>
+            
+            </div>
+
+        </div>
+
+        <%- include('partials/pagination') %>
+
+    </form>

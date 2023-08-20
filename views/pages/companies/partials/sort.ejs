@@ -1,0 +1,28 @@
+<div class="mb-3">
+    <label for="sort" class="form-label">Sortuj wg</label>
+        <select name="sort" id="sort" class="form-control">
+            <option value="">Domyślnie</option>
+            
+            <option value="name|asc" 
+                <%= query.sort === 'name|asc' ? 'selected' : '' %>>
+                    A-Z (rosnąco)
+            </option>
+
+            <option value="name|desc" 
+                <%= query.sort === 'name|desc' ? 'selected' : '' %>>
+                    Z-A (malejąco)
+            </option>
+
+            <option value="employeesCount|asc" 
+                <%= query.sort === 'employeesCount|asc' ? 'selected' : '' %>>
+                    Pracowników (rosnąco)
+            </option>
+            
+            <option value="employeesCount|desc" 
+                <%= query.sort === 'employeesCount|desc' ? 'selected' : '' %>>
+                    Pracowników (malejąco)
+            </option>
+
+        </select>
+    <button class="btn btn-primary mt-3">Sortuj</button>
+</div>

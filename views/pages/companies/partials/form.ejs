@@ -1,0 +1,67 @@
+<!-- Zmiana enctype z  aplication/x-www-form-urlencoded na mulipart/form-data -->
+<form method="POST" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label for="nameCompany" class="form-label">Nazwa Firmy</label>
+        <input type="text" 
+            id="nameCompany"
+            name="name"
+            value="<%= form.name %>"
+            class="form-control <%= errors?.name ? 'is-invalid' : '' %>" required
+            autocomplete="off">
+        <div class="form-text">Przynajmniej 3 znaki</div>
+        <% if (errors?.name) { %>
+        <div class="invalid-feedback"><%= errors.name.message %></div>
+        <% } %>
+    </div>
+
+    <% if (showFile) {%>
+        <% if (form.image) { %>
+            <div class="row">
+
+                <div class="col">
+
+                    <img src="/uploads/<%= form.image %>" alt="" class="img-fluid">
+                    <a href="/admin/firmy/<%= form.slug %>/usun-zdjecie" class="btn btn-sm btn-danger">Usuń</a>
+
+                </div>
+
+            </div>
+        <% } %>
+    <div class="mb-3">
+        <label for="image" class="form-label">Zdjęcie</label>
+        <input type="file" name="image" id="image" class="form-control">
+    </div>
+    <% } %>
+    <div class="mb-3">
+        <label for="slugName" class="form-label">Slug</label>
+        <input type="text" 
+            id="slugName" 
+            name="slug" 
+            value="<%= form.slug %>"
+            class="form-control <%= errors?.slug ? 'is-invalid' : '' %>" required>
+        <div class="form-text">Przynajmniej 3 znaki</div>
+        <% if (errors?.slug) { %>
+            <div class="invalid-feedback"><%= errors.slug.message %></div>
+            <% } %>
+    </div>
+
+    <div class="mb-3">
+        <label for="employeesCounter" class="form-label">Liczba Pracownikow</label>
+        <input type="number" 
+            id="employeesCounter"
+            name="employeesCount"
+            value="<%= form.employeesCount %>"
+            class="form-control">
+        <div class="form-text">Domyślnie 1</div>
+    </div>
+
+    <button class="btn btn-primary"><%- buttonText %></button>
+
+</form>
+
+<% if (errors) { %>
+    <div class="alert alert-danger"> 
+        Popraw dane w formularzu.
+    </div>
+<% } %>

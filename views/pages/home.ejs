@@ -1,0 +1,9 @@
+<h1>Strona Główna - Node Kurs</h1>
+
+<% if (user) { %>
+    <p>Zalogowano!</p>
+    <p>Adres email: <%= user.email %> </p>
+    <p>USER_ID: (<%= user._id %>)</p>
+<% } else { %>
+    <p> Witaj na naszej stronie do wyszukiwania firm. Zarejestruj się, żeby dodać swoją firme!</p>
+<% } %>
