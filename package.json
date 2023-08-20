@@ -4,7 +4,7 @@
   "description": "modul3",
   "main": "index.js",
   "scripts": {
-    "start": "",
+    "start": "node app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon app/index.js -e js,json,ejs",
     "debug": "nodemon --inspect app/index.js -e js,json,ejs"
