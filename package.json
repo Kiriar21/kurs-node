@@ -4,11 +4,12 @@
   "description": "modul3",
   "main": "index.js",
   "scripts": {
+    "start": "",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon app/index.js -e js,json,ejs",
     "debug": "nodemon --inspect app/index.js -e js,json,ejs"
   },
-  "author": "",
+  "author": "node app/index.js",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
